@@ -4,6 +4,7 @@
   "description": "Dahlia scraper",
   "main": "lib/index.js",
   "scripts": {
+    "build": "tsc",
     "start": "tsc && node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "npm run build"

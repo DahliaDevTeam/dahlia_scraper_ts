@@ -9,7 +9,7 @@ export const DahliaScraper = new ScraperFactory();
 DahliaScraper.register(ScrapedSite.eventbrite, new EventbriteWebScraper());
 DahliaScraper.register(ScrapedSite.fever, new FeverWebScraper());
 
-export async function scraperAllSites(): Promise<EventEntity[]> {
+export async function scrapeAllSites(): Promise<EventEntity[]> {
 
     const res = await Promise.all(
         Object.values(ScrapedSite)

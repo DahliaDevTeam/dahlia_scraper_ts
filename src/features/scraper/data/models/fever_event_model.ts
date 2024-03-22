@@ -62,6 +62,10 @@ export class FeverEventModel extends EventModel {
                     region: '',
                     street: utf8Encode((json.place.address as string).split(', ')[0]),
                     postalCode: utf8Encode((json.place.address as string).split(', ')[1])
+                },
+                geoPoint: {
+                    lat: json.place.latitude,
+                    lng: json.place.longitude,
                 }
             },
             url: json.default_session.share_url,

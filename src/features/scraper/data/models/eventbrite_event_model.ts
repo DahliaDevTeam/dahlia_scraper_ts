@@ -36,6 +36,10 @@ export class EventbriteEventModel extends EventModel {
     static fromJson(json: any): EventbriteEventModel {
         const startDate = `${json.start_date} ${json.start_time}`;
         const endDate = `${json.end_date} ${json.end_time}`;
+
+        const lat = json['primary_venue']['address']['latitude'];
+        const lng = json['primary_venue']['address']['longitude'];
+
         return new EventbriteEventModel({
             id: json.id,
             name: utf8Encode(json.name),
@@ -63,6 +67,10 @@ export class EventbriteEventModel extends EventModel {
                     region: utf8Encode(json.primary_venue.address.region as string),
                     street: utf8Encode(json.primary_venue.address.localized_address_display as string),
                     postalCode: utf8Encode(json.primary_venue.address.postal_code ?? ''),
+                },
+                geoPoint: {
+                    lat: typeof lat == 'string' ? Number(lat) : lat,
+                    lng: typeof lat == 'string' ? Number(lng) : lng,
                 }
             },
             url: json.url,

@@ -53,6 +53,7 @@ export abstract class EventEntity implements IEventEntity {
         this.organizer = result.organizer;
         this.price = result.price;
         this.tags = result.tags;
+        this.location = result.location;
         this.isFree = result.isFree;
         this.url = result.url;
         this.isOnline = result.isOnline;

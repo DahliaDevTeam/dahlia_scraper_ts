@@ -69,8 +69,8 @@ export class EventbriteEventModel extends EventModel {
                     postalCode: utf8Encode(json.primary_venue.address.postal_code ?? ''),
                 },
                 geoPoint: {
-                    lat: typeof lat == 'string' ? Number(lat) : lat,
-                    lng: typeof lat == 'string' ? Number(lng) : lng,
+                    lat: typeof lat === 'string' ? Number(lat) : lat,
+                    lng: typeof lng === 'string' ? Number(lng) : lng,
                 }
             },
             url: json.url,

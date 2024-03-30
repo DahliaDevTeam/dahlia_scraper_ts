@@ -35,7 +35,7 @@ export class FeverEventModel extends EventModel {
 
     static fromJson(json: any): FeverEventModel {
         return new FeverEventModel({
-            id: json.id,
+            id: typeof json.id === 'string' ? parseInt(json.id) : json.id,
             name: utf8Encode(json.name),
             startDate: new Date(Date.parse(json.default_session.starts_at_iso)),
             endDate: new Date(Date.parse(json.default_session.ends_at_iso)),

@@ -41,7 +41,7 @@ export class EventbriteEventModel extends EventModel {
         const lng = json['primary_venue']['address']['longitude'];
 
         return new EventbriteEventModel({
-            id: json.id,
+            id: typeof json.id === 'string' ? parseInt(json.id) : json.id,
             name: utf8Encode(json.name),
             startDate: new Date(Date.parse(startDate)),
             endDate: new Date(Date.parse(endDate)),

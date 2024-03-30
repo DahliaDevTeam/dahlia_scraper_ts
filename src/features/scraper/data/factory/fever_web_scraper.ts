@@ -31,7 +31,7 @@ export class FeverWebScraper implements WebScraperInterface {
         .map<string>((e) => e.id.toString());
     }
 
-    async getEvent(id: string): Promise<EventEntity> {
+    async getEvent(id: string): Promise<EventEntity | undefined> {
         const response = await fetch(
             this.eventDetailsUrl(id),
             {
@@ -43,13 +43,16 @@ export class FeverWebScraper implements WebScraperInterface {
 
         const json = await response.json();
 
+        if (json.default_session === null) return undefined;
+
         return FeverEventModel.fromJson(json);
     }
 
     async getEvents(ids: string[]): Promise<EventEntity[]> {
         const result: EventEntity[] = [];
         for (const id of ids) {
-            result.push(await this.getEvent(id));
+            const event = await this.getEvent(id);
+            if (event !== undefined)result.push(event);
         }
         return result;
     }

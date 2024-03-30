@@ -27,7 +27,7 @@ export class FeverEventModel extends EventModel {
     constructor(event: IFeverEventModel) {
         super({
             ...event,
-            source: ScrapedSite.eventbrite,
+            source: ScrapedSite.fever,
             isFree: false,
             isOnline: false,
         });
